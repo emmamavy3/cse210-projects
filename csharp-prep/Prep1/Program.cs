@@ -1,4 +1,5 @@
 using System;
+using System.Security.Cryptography.X509Certificates;
 
 class Program
 {
@@ -7,11 +8,11 @@ class Program
         Console.WriteLine("Hello Prep1 World!");
 
         // assignment 1
-        // Console.Write("What is your first name? ");
-        // string firstName = Console.ReadLine();
-        // Console.Write("What is your first name? ");
-        // string lastName = Console.ReadLine();
-        // Console.WriteLine($"Your name is {lastName}, {firstName} {lastName}");
+        Console.Write("What is your first name? ");
+        string firstName = Console.ReadLine();
+        Console.Write("What is your first name? ");
+        string lastName = Console.ReadLine();
+        Console.WriteLine($"Your name is {lastName}, {firstName} {lastName}");
 
         // assignment 2
         string letter = "";
@@ -105,5 +106,39 @@ class Program
             Console.WriteLine("You failed. Be Better!");
         }
         
+    // assignment 3
+        string play = "";
+
+        do
+        {
+            int guess = 0;
+            int x = 0;
+
+            Random randomNum = new Random();
+            int magicNum = randomNum.Next(1, 100);
+
+            do
+            {
+                Console.Write("What is your guess: ");
+                guess = int.Parse(Console.ReadLine());
+                int counter = x++;
+                if (magicNum > guess)
+                {
+                    Console.WriteLine("Higher");
+                } 
+                else if (magicNum < guess)
+                {
+                    Console.WriteLine("Lower");
+                }
+                else if (magicNum == guess)
+                {
+                    Console.WriteLine("Correct");
+                }
+            } while (guess != magicNum);
+            Console.WriteLine($"You made {x} guesses.");
+            Console.WriteLine("Would you like to play again? ");
+            play = Console.ReadLine();
+        } while (play != "no");
     }
+
 }
