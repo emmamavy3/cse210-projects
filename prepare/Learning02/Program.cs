@@ -1,4 +1,5 @@
 using System;
+using System.ComponentModel;
 
 
 class Program
@@ -25,7 +26,9 @@ class Program
 
 
         Resume myResume = new Resume();
-        myResume._name = "Allison Rose";
+        myResume._name = "Allison Rose"; 
+        // myResume.AddJob(job1);
+        // myResume.AddJob(job2);
         
         myResume.DisplayResume();
         job1.DisplayJobDetails();
