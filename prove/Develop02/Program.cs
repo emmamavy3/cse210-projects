@@ -7,6 +7,7 @@ class Program
         Entry myEntry = new Entry();
         myEntry.GetPrompt();
         myEntry.GetEntry();
+        myEntry.DisplayEntry();
 
     }
 
@@ -18,7 +19,7 @@ class Program
     //     Console.WriteLine("3. Load");
     //     Console.WriteLine("4. Save");
     //     Console.WriteLine("5. Quit");
-    //     Console.WriteLine("What would you like to do")
+    //     Console.WriteLine("What would you like to do");
 
     // }
 }

@@ -4,6 +4,9 @@ class Entry
 {
     private List<string> _prompts;
     private Random rand;
+    DateTime theCurrentTime = DateTime.Now;
+    private string currentPrompt;
+    private string userEntry;
 
     public void GetPrompt()
     {
@@ -16,15 +19,28 @@ class Entry
             "If I had one thing I could do over today, what would it be?"
         };
        rand = new Random();
+       theCurrentTime = DateTime.Now;
 
     }
 
     public void GetEntry()
     {
         int index = rand.Next(_prompts.Count);
-        Console.WriteLine(_prompts[index]);
+        currentPrompt = _prompts[index];
+        Console.WriteLine(currentPrompt);
 
-        string entry = Console.ReadLine();
-        Console.WriteLine(entry);
+        // string entry = Console.ReadLine();
+        // Console.WriteLine(entry);
+        userEntry = Console.ReadLine();
+    }
+
+    public void DisplayEntry()
+    {
+        string dateText = theCurrentTime.ToShortDateString();
+    
+        Console.WriteLine($"Date: {dateText} - Prompt: {currentPrompt} \n{userEntry}");
+
+        
+
     }
 }
