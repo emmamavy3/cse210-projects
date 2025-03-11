@@ -34,6 +34,11 @@ class Entry
         userEntry = Console.ReadLine();
     }
 
+    public string CreateFile()
+    {
+
+    }
+
     public void DisplayEntry()
     {
         string dateText = theCurrentTime.ToShortDateString();
