@@ -6,7 +6,8 @@ class Program
     {
         Console.WriteLine("Hello Learning03 World!");
 
-        Fraction fraction1 = new Fraction();
-        
+        Fraction fractions = new Fraction(3, 4);
+        Console.WriteLine(fractions);        
+
     }
 }
