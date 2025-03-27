@@ -4,6 +4,14 @@ class Program
 {
     static void Main(string[] args)
     {
+        List<int> numbers = [1,2,3,4,5,6,7,8,9,10];
+
+        List<int> evenNumbers = numbers.Where((x) => x % 2 == 0).ToList();
+        foreach(int x in evenNumbers)
+        {
+            Console.WriteLine(x);
+        }
+
         Console.WriteLine("Hello Sandbox World!");
 
         // Console.WriteLine("Hello CSE 210");
@@ -68,4 +76,6 @@ class Program
         }
         Console.WriteLine("The fututre has arrived");
     }
+
+
 }

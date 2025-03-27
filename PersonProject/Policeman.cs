@@ -11,4 +11,8 @@ class Policeman : Person
     {
         return $"{_weapons}, {DisplayPersonInfo()}";
     }
+    public override string GetName()
+    {
+        return $"Captian {base.GetName()}";
+    }
 }

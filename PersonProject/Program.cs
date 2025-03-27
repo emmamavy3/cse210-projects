@@ -12,7 +12,10 @@ class Program
         Console.WriteLine($"Police Man Height {mypoliceMan.GetHeight()} inches");
         Console.WriteLine($"{mypoliceMan.DisplayPoliceinfo()}");
 
+        Console.WriteLine($"{mypoliceMan.GetName()}");
+
         Doctor myDoctor = new Doctor("Peditation","Stella", "Dreiser", 36);
         Console.WriteLine($"{myDoctor.DisplayDoctorInfo}");
     }
+
 }
