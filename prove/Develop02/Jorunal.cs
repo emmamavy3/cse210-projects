@@ -5,27 +5,51 @@ class Journal
 
     public Journal()
     {
-        _entries = [];
+        _entries = new List<string>();
     }
 
-    public void AddEntry(Entry userEntry)
+    public void AddEntry(string entry)
     {
-        _entries.Add(userEntry);
+        _entries.Add(entry);
     }
-
-    public void ReadFile(string filename)
+    public void Display()
     {
-        string[] lines = System.IO.File.ReadAllLines(filename);
-
-        foreach (string line in lines)
+        foreach (var entry in _entries)
         {
-            string[] parts = line.Split("#");
+            Console.WriteLine(entry);
+        }
+    }
 
-            string date = parts[0];
-            string currentPrompt = parts[1];
-            string entryText = parts[3];
+    public void SaveToFile(string journalName)
+    {
+        string filename = journalName + ".txt";
+        using (StreamWriter outputFile = new StreamWriter(filename))
+        {
+            foreach (var entry in _entries)
+            {
+                outputFile.WriteLine(entry.FormatForFile());
+            }
+        }
+    }
 
-            Entry entry = new Entry( date, currentPrompt, userEntry)
+    public void loadEntries(string fileName = "journal.txt")
+    {
+        if (File.Exists(fileName))
+        {
+            string[] lines = File.ReadAllLines(fileName);
+            foreach (string line in lines)
+            {
+                string[] parts = line.Split("#");
+                if (parts.Length == 3)
+                {
+                    Console.WriteLine($"Date: {parts[0]} - Prompt: {parts[1]} - Entry: {parts[2]}");
+                    continue;
+                }
+            }
+        }
+        else
+        {
+            Console.WriteLine("File not found.");
         }
     }
 }

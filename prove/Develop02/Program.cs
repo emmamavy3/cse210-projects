@@ -4,14 +4,15 @@ class Program
 {
     static void Main(string[] args)
     {
-        Entry myEntry = new Entry();
-        myEntry.GetPrompt();
-        myEntry.GetEntry();
-        myEntry.DisplayEntry();
-
+        int response;
+        Journal myJournal = new Journal();
+        do
+        {
+            response = Menu(myJournal);
+        } while (response != 5);
     }
 
-    static void Menu()
+    static int Menu(Journal myJournal)
     {
         Console.WriteLine("Please select one of the following");
         Console.WriteLine("1. Write");
@@ -22,45 +23,32 @@ class Program
         Console.WriteLine("What would you like to do");
         int response = int.Parse(Console.ReadLine());
 
-        switch(response)
+        switch (response)
         {
             case 1:
-                Entry myEntry = new Entry();
-                myEntry.GetPrompt();
-                myEntry.GetEntry();
-            break;
-
+                JournalEntry newEntry = new JournalEntry();
+                newEntry.GetPrompt();
+                myJournal.AddEntry(newEntry.GetEntry());
+                break;
             case 2:
-                myEntry.DisplayEntry();
-            break;
-
+                myJournal.Display();
+                break;
             case 3:
-                
-
+                Console.Write("Please enter the file name to load: ");
+                myJournal.loadEntries(Console.ReadLine());
+                break;
+            case 4:
+                Console.Write("Please create a file name: ");
+                myJournal.SaveToFile(Console.ReadLine());
+                break;
+            case 5:
+                Console.WriteLine("Goodbye!");
+                break;
+            default:
+                Console.WriteLine("Invalid selection. Please try again.");
+                break;
         }
+        return response;
 
-        // if (num == 1)
-        // {
-        //     Entry myEntry = new Entry();
-        //     myEntry.GetPrompt();
-        //     myEntry.GetEntry();
-        //     myEntry.DisplayEntry();
-        // }
-        // else if (num == 2)
-        // {
-
-        // }
-        // else if (num == 3)
-        // {
-
-        // }
-        // else if (num == 4)
-        // {
-
-        // }
-        // else if (num == 5)
-        // {
-        //     Console.WriteLine("");
-        // }
     }
 }
