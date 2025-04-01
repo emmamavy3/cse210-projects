@@ -39,7 +39,7 @@ class Program
                 break;
             case 4:
                 Console.Write("Please create a file name: ");
-                myJournal.SaveToFile(Console.ReadLine());
+                // 2myJournal.SaveToFile(Console.ReadLine());
                 break;
             case 5:
                 Console.WriteLine("Goodbye!");
