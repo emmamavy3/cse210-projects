@@ -28,7 +28,8 @@ class Program
             case 1:
                 JournalEntry newEntry = new JournalEntry();
                 newEntry.GetPrompt();
-                myJournal.AddEntry(newEntry.GetEntry());
+                newEntry.GetEntry();
+                myJournal.AddEntry(newEntry);
                 break;
             case 2:
                 myJournal.Display();

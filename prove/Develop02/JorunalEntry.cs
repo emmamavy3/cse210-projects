@@ -39,10 +39,9 @@ class JournalEntry
         userEntry = Console.ReadLine();
         return userEntry;
     }
-    public void DisplayEntry()
+    public string DisplayEntry()
     {
-        Console.WriteLine($"Date: {_date.ToShortDateString()} - Prompt: {currentPrompt}");
-        Console.WriteLine($"Entry: {userEntry}");
+        return $"Date: {_date.ToShortDateString()} - Prompt: {currentPrompt} - Entry: {userEntry}";
     }
     public string FormatForFile()
     {

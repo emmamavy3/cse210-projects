@@ -1,14 +1,14 @@
 
 class Journal
 {
-    private List<string> _entries;
+    private List<JournalEntry> _entries;
 
     public Journal()
     {
-        _entries = new List<string>();
+        _entries = new List<JournalEntry>();
     }
 
-    public void AddEntry(string entry)
+    public void AddEntry(JournalEntry entry)
     {
         _entries.Add(entry);
     }
@@ -16,7 +16,7 @@ class Journal
     {
         foreach (var entry in _entries)
         {
-            Console.WriteLine(entry);
+            Console.WriteLine(entry.DisplayEntry());
         }
     }
 
