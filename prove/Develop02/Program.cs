@@ -35,12 +35,12 @@ class Program
                 myJournal.Display();
                 break;
             case 3:
-                Console.Write("Please enter the file name to load: ");
+                Console.WriteLine("Please enter the file name to load: ");
                 myJournal.loadEntries(Console.ReadLine());
                 break;
             case 4:
-                Console.Write("Please create a file name: ");
-                // 2myJournal.SaveToFile(Console.ReadLine());
+                Console.WriteLine("Please create a file name: ");
+                myJournal.SaveToFile(Console.ReadLine());
                 break;
             case 5:
                 Console.WriteLine("Goodbye!");

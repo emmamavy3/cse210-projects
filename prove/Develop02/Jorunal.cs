@@ -43,7 +43,8 @@ class Journal
                 if (parts.Length == 3)
                 {
                     Console.WriteLine($"Date: {parts[0]} - Prompt: {parts[1]} - Entry: {parts[2]}");
-                    continue;
+                    JournalEntry entry = new JournalEntry(parts[0], parts[1], parts[2]);
+                    _entries.Add(entry);
                 }
             }
         }
