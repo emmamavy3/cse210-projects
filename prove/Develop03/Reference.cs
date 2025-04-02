@@ -4,23 +4,28 @@ class Reference
     private int _chapter;
     private int[] _verse;
 
-    private string GetScriptureReferenceString()
+    public Reference(string bookName, int chapter, int verse)
     {
-        _bookName = "John";
-        _chapter = 3;
-        return       
-    }
-      public ScriptureReference(string name, int chapter, int startVerse, int endVerse)
-    {
-        _bookName = name;
+        _bookName = bookName;
         _chapter = chapter;
-        _verse = verse;
+        _verse = new int[] { verse };
     }
-    public ScriptureReference(string name, int chapter, int startVerse, int endVerse)
+    public Reference(string bookName, int chapter, int startVerse, int endVerse)
     {
-        _bookName = name;
+        _bookName = bookName;
         _chapter = chapter;
-        _verse = verse;
+        _verse = new int[] { startVerse, endVerse };
     }
-    public void ShowScriptureReference
-} 
+    public void ShowReference()
+    {
+        Console.WriteLine($"{_bookName} {_chapter}:{string.Join(",", _verse)}");
+    }
+    public string GetReference()
+    {
+        return _bookName;
+    }
+    private string GetReferenceString()
+    {
+        return $"{_bookName} {_chapter}:{string.Join(",", _verse)}";
+    }
+}
