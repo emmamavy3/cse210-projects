@@ -2,18 +2,19 @@ class Scripture
 {
     private List<Word> _words;
     private Reference _reference;
+    private static Random _random = new Random();
 
-    public Scripture(string name, int chapter, int verse, string text)
-    {
-        _reference = new Reference(name, chapter, verse);
-        _words = text.Split(' ').Select(word => new Word(word)).ToList();
-    }
-    public Scripture(string name, int chapter, int startVerse, int endVerse, string text)
-    {
-        _reference = new Reference(name, chapter, startVerse, endVerse);
-        _words = text.Split(' ').Select(word => new Word(word)).ToList();
+    // public Scripture(string name, int chapter, int verse, string text)
+    // {
+    //     _reference = new Reference(name, chapter, verse);
+    //     _words = text.Split(' ').Select(word => new Word(word)).ToList();
+    // }
+    // public Scripture(string name, int chapter, int startVerse, int endVerse, string text)
+    // {
+    //     _reference = new Reference(name, chapter, startVerse, endVerse);
+    //     _words = text.Split(' ').Select(word => new Word(word)).ToList();
 
-    }
+    // }
     public Scripture(Reference reference, string text)
     {
         _reference = reference;
@@ -22,12 +23,15 @@ class Scripture
     }
     public bool HideSomeWords()
     {
-        Random random = new Random();
-        int numberOfHiddenWords = NumberOfHiddenWords();
-        for (int i = 0; i < numberOfHiddenWords; i++)
+        int wordsToHide = 3; // Hide 3 words at a time
+        List<Word> visibleWords = _words.Where(word => !word.IsHidden()).ToList();
+
+
+        for (int i = 0; i < wordsToHide && visibleWords.Count > 0; i++)
         {
-            int index = random.Next(_words.Count);
-            _words[index].SetIsHidden(true);
+            int index = _random.Next(visibleWords.Count);
+            visibleWords[index].SetIsHidden(true);
+            visibleWords.RemoveAt(index);
         }
         return true;
     }
@@ -40,28 +44,11 @@ class Scripture
         Console.WriteLine(_reference.GetReference());
         foreach (Word word in _words)
         {
-            Console.Write(word + " ");
+            Console.Write(word.GetHiddenWord() + " ");
         }
         Console.WriteLine();
     }
-    public string GetScriptureReference()
-    {
-        return _reference.GetReference();
-    }
+    
 
-    private int NumberOfHiddenWords()
-    {
-        int numberOfWords = _words.Count;
-        return (int)(numberOfWords * 0.3);
-    }
-    private List<string> ConvertToWords()
-    {
-        List<string> words = new List<string>();
-        foreach (string word in _words)
-        {
-            words.Add(word);
-        }
-        return words;
-    }
 
 }

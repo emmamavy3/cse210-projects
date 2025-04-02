@@ -16,6 +16,7 @@ class Program
             string input = Console.ReadLine();
             if (input.ToLower() == "quit") break;
 
+            Console.Clear();
             scripture.HideSomeWords();
             scripture.ShowScripture();
         }
