@@ -3,18 +3,6 @@ class Scripture
     private List<Word> _words;
     private Reference _reference;
     private static Random _random = new Random();
-
-    // public Scripture(string name, int chapter, int verse, string text)
-    // {
-    //     _reference = new Reference(name, chapter, verse);
-    //     _words = text.Split(' ').Select(word => new Word(word)).ToList();
-    // }
-    // public Scripture(string name, int chapter, int startVerse, int endVerse, string text)
-    // {
-    //     _reference = new Reference(name, chapter, startVerse, endVerse);
-    //     _words = text.Split(' ').Select(word => new Word(word)).ToList();
-
-    // }
     public Scripture(Reference reference, string text)
     {
         _reference = reference;

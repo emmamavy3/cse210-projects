@@ -2,97 +2,57 @@ class Activity
 {
     private string _activityName;
     private string _activityDescription;
-    private int _duration;
+    protected int _duration;
     private DateTime _endTime;
-    public Activity(string activityName, string activityDescription, int duration)
+
+    public Activity(string activityName, string activityDescription)
     {
         _activityName = activityName;
         _activityDescription = activityDescription;
-        _duration = duration;
     }
-    public void DisplayActivity()
+    public void DisplayStartingMessage()
     {
-        Console.WriteLine($"Welcome to the {_activityName} Activity");
-    }
-    public void DisplayDescription()
-    {
-        Console.WriteLine($"This activity {_activityDescription}");
+        Console.WriteLine($"Welcome to the {_activityName}");
+        Console.WriteLine(_activityDescription);
+        Console.WriteLine("Prepare to begin... ");
+        DisplaySpinner(3);
     }
     public void DisplayEnding()
     {
         Console.WriteLine("Well Done!!!");
         Console.WriteLine($"You have completes another {_duration} seconds of the {_activityName} Activity.");
+        DisplaySpinner(3);
     }
-    // public void RunCountDown()
-    // {
-        
-    // }
-    public void DisplaySpinner()
+    public void DisplaySpinner(int seconds)
     {
-        int counter = 0;
-        string spinnerString = "+-";
-        DateTime now = DateTime.Now;
-        DateTime passing = now.AddSeconds(_duration);
-
-
-        Console.WriteLine("Get Ready...");
-
-        while(now < passing)
+        string[] spinner = { "|", "/", "-", "\\" };
+        _endTime = DateTime.Now.AddSeconds(seconds);
+        int i = 0;
+        while (DateTime.Now < _endTime)
         {
-            Thread.Sleep(100);
-            now = DateTime.Now;
-            Console.Write($"{spinnerString[counter%2]}");
+            Console.Write(spinner[i % spinner.Length]);
+            Thread.Sleep(500);
             Console.Write("\b");
-            Thread.Sleep(200);
+            i++;
         }
-        Console.WriteLine("The fututre has arrived");
-
 
     }
-
-    public void StartTime()
+    protected void CountDown(int seconds)
     {
-
+        DateTime endTime = DateTime.Now.AddSeconds(seconds);
+        while (DateTime.Now < endTime)
+        {
+            Console.WriteLine(seconds + " ");
+            Thread.Sleep(1000);
+            seconds--;
+        }
     }
 
-    public void ObtainDuration()
+    public int ObtainDuration()
     {
         Console.Write("How long, in seconds, would you like for your session: ");
         _duration = int.Parse(Console.ReadLine());
+        return _duration;
     }
 
-//     static void RunSpinner()
-//     {
-//         int counter = 0;
-//         //string spinnerString = "+-";
-
-//         string[] spinnerStrings = {":)", ":("};
-
-//         while(counter < 10)
-//         {
-//             Console.Write($"{spinnerStrings[counter%2]}");
-//             Console.Write("\b\b");
-//             Thread.Sleep(200);
-//             // Console.Write("-");
-//             // Console.Write("\b");
-//             //Thread.Sleep(200);
-//             counter++;
-//         }
-
-//     }
-
-//     static void BacktoTheFuture()
-//     {
-//         DateTime now = DateTime.Now;
-//         DateTime future = now.AddSeconds(5);
-
-//         Console.Write("Wating for the future");
-
-//         while(now < future)
-//         {
-//             Thread.Sleep(100);
-//             now = DateTime.Now;
-//         }
-//         Console.WriteLine("The fututre has arrived");
-//     }
 }

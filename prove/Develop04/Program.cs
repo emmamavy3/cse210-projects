@@ -1,45 +1,44 @@
 using System;
-using System.Net;
-
 class Program
 {
     static void Main(string[] args)
     {
         Menu viewMenu = new Menu();
-        Activity myActivity = new Activity("","", 4);
+        bool isRunning = true;
+        Activity activity = new Activity("DefaultActivityName", "DefaultActivityDescription");
+            int duration = activity.ObtainDuration();
 
-        switch(viewMenu.DisplayMenu())
+        while (isRunning)
         {
-            case 1:
-                myActivity.DisplayActivity();
-            break;
+            int choice = viewMenu.DisplayMenu();
+
+            switch (choice)
+            {
+                case 1:
+                    BreathingActivity breathing = new BreathingActivity(duration);
+                    breathing.DisplayStartingMessage();
+                    breathing.RunActivity();
+                    breathing.DisplayEnding();
+                    break;
+                case 2:
+                    ReflectionActivity reflection = new ReflectionActivity(duration);
+                    reflection.DisplayStartingMessage();
+                    reflection.RunActivity();
+                    reflection.DisplayEnding();
+                    break;
+                case 3:
+                    ListingActivity listing = new ListingActivity(duration);
+                    listing.DisplayStartingMessage();
+                    listing.RunActivity();
+                    listing.DisplayEnding();
+                    break;
+                case 4:
+                    isRunning = false;
+                    break;
+                default:
+                    Console.WriteLine("Invalid choice, please try again.");
+                    break;
+            }
         }
-
-        
-
     }
-
-
-    // switch(response)
-    //     {
-    //         case 1:
-    //             // BreathingActivity myBreathingActivity = new BreathingActivity();
-    //             Activity myActivity = new Activity("test", "test", 12);
-    //             myActivity.DisplayActivity();
-
-    //         break;
-    //         // case 2:
-    //         //     ReflectionActivity myReflectionActivity = new ReflectionActivity();
-                
-    //         // break;
-    //         // case 3:
-    //         //     ListingActivity mylistingActivity = new ListingActivity();
-                
-    //         // break;
-    //         case 4:
-    //             return;
-    //         default:                
-    //         break;
-    //     }
-    
 }

@@ -16,16 +16,8 @@ class Reference
         _chapter = chapter;
         _verse = new int[] { startVerse, endVerse };
     }
-    // public void ShowReference()
-    // {
-    //     Console.WriteLine($"{_bookName} {_chapter}:{string.Join(",", _verse)}");
-    // }
     public string GetReference()
     {
         return $"{_bookName} {_chapter}:{string.Join(",", _verse)}";
     }
-    // private string GetReferenceString()
-    // {
-    //     return $"{_bookName} {_chapter}:{string.Join(",", _verse)}";
-    // }
 }

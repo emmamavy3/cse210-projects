@@ -9,7 +9,6 @@ class Menu
         Console.WriteLine("4. Quit");
         Console.Write("Select a choice from the menu: ");
 
-        int response = int.Parse(Console.ReadLine());
-        return response;
+        return int.Parse(Console.ReadLine());
     }
 }
