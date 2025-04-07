@@ -31,17 +31,21 @@ class ReflectionActivity : Activity
         Random random = new Random();
         string prompt = _prompts[random.Next(_prompts.Count)];
         Console.WriteLine("\nReflect on the following prompt:");
-        Console.WriteLine($"--- {prompt} ---"); ;
-        CountDown(5);
+        Console.Write($" {prompt} "); ;
+        CountDown(15);
+        Console.Clear();
 
         Console.WriteLine("Now ponder on each of the following questions as they relate to this experience.");
-        Console.WriteLine("You may begin...");
+        Console.Write("You may begin... ");
         DisplaySpinner(5);
+        Console.Clear();
 
         foreach (string question in _questions)
         {
-            Console.WriteLine(question);
+            Console.WriteLine("\n");
+            Console.Write(question + " ");
             CountDown(10);
+            Console.Clear();
         }
     }
 }

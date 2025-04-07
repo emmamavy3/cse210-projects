@@ -42,8 +42,21 @@ class Activity
         DateTime endTime = DateTime.Now.AddSeconds(seconds);
         while (DateTime.Now < endTime)
         {
-            Console.WriteLine(seconds + " ");
+            Console.Write(seconds);
             Thread.Sleep(1000);
+            if (seconds >= 10)
+            {
+                Console.Write("\b\b");
+            }
+            else if (seconds >= 1)
+            {
+                Console.Write("\b");
+            }
+            else if (seconds == 0)
+            {
+                Console.Write(" ");
+            }
+            Console.Write("\b");
             seconds--;
         }
     }

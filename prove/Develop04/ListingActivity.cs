@@ -20,7 +20,6 @@ class ListingActivity : Activity
         Console.WriteLine("List as many responses as you can to the following prompt: ");
         Console.WriteLine(prompt);
         Console.WriteLine("You may begin... ");
-        CountDown(5);
         DisplaySpinner(5);
 
         List<string> responses = new List<string>();
@@ -30,6 +29,7 @@ class ListingActivity : Activity
             Console.Write("> ");
             string response = Console.ReadLine();
             responses.Add(response);
+            Console.Clear();
         }
         Console.WriteLine($"You listed {responses.Count} items.");
     }
