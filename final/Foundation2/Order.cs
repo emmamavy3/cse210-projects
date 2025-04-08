@@ -1,32 +1,38 @@
 class Order
 {
     private List<Product> _products;
-    private string _customerName;
-    public Order(string customerName)
+    private Customer _customerName;
+    public Order(Customer customerName)
     {
         _customerName = customerName;
         _products = new List<Product>();
     }
-    public int CalculateTotalPrice()
+    public void AddProduct(Product product)
     {
-        int totalPrice = 0;
+        _products.Add(product);
+    }
+    public double CalculateTotalPrice()
+    {
+        double total = 0;
         foreach (var product in _products)
         {
-            totalPrice += product.GetTotalPrice();
+            total += product.GetTotalPrice();
         }
-        return totalPrice;
+        double shippingCost = _customerName.LiveInUSA() ? 5 : 35;
+
+        return total + shippingCost;
     }
     public string GetPackingLabel()
     {
         string packingLabel = $"Packing Label for {_customerName}:\n";
         foreach (var product in _products)
         {
-            packingLabel += product.GetProductDetails() + "\n";
+            packingLabel += $"{product.GetPackingInfo()}\n";
         }
         return packingLabel;
     }
     public string GetShippingLabel()
     {
-        return $"Shipping Label for {_customerName}";
+        return $"Shipping Label for {_customerName.GetName()}:\n{_customerName.GetAddress().GetFullAddress()}";
     }
 }

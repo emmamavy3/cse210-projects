@@ -3,23 +3,23 @@ using System.Dynamic;
 class Product
 {
     private string _name;
-    private string _product;
+    private string _productID;
     private int _price;
     private int _quantity;
 
-    public Product(string name, string product, int price, int quantity)
+    public Product(string name, string productID, int price, int quantity)
     {
         _name = name;
-        _product = product;
+        _productID = productID;
         _price = price;
         _quantity = quantity;
     }
-    public void GetTotalPrice()
+    public double GetTotalPrice()
     {
-        float totalPrice = _price * _quantity;
+        return _price * _quantity;
     }
-    public string GetProductDetails()
+    public string GetPackingInfo()
     {
-        return $"Product Name: {_name}, Product Type: {_product}, Price: {_price}, Quantity: {_quantity}";
+        return $"{_name} ID: {_productID}";
     }
 }

@@ -1,7 +1,7 @@
 class Comment
 {
-    private string _commenterName;
-    private string _commentText;
+    public string _commenterName {get; }
+    public string _commentText{get; }
 
     public Comment(string commenterName, string commentText)
     {
