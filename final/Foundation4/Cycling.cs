@@ -2,21 +2,25 @@ class Cycling : Activity
 {
     private double _speed; 
 
-    public Cycling(string type, int minutes, string date, double speed)
-    : base(type, minutes, date)
+    public Cycling(string date, int minutes, double speed)
+    : base(date, minutes)
     {
         _speed = speed;
     }
-    public override int GetDistance()
+    public override double GetDistance()
     {
-        return (int)(_speed * minutes / 60); // Convert speed to miles per minute and multiply by minutes
+        return _speed * GetMinutes() / 60; 
     }
     public override double GetSpeed()
     {
-        return _speed; // Speed is already in mph
+        return _speed;
     }
     public override double GetPace()
     {
-        return 60 / _speed; // Pace is the inverse of speed (minutes per mile)
+        return 60 / _speed;
+    }
+    public override string GetActivityType()
+    {
+        return "Cycling";
     }
 }

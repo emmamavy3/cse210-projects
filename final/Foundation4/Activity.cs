@@ -1,28 +1,34 @@
 class Activity
 {
-    private string _type;
     private int _minutes;
     private string _date;
-    public Activity(string type, int minutes, string date)
+    public Activity(string date, int minutes)
     {
-        _type = type;
         _minutes = minutes;
         _date = date;
     }
-    public int GetDistance()
+    public virtual double GetDistance()
     {
         return 0;
     }
-    public double GetSpeed()
+    public virtual double GetSpeed()
     {
         return 0;
     }
-    public double GetPace()
+    public virtual double GetPace()
     {
         return 0;
+    }
+    public virtual string GetActivityType()
+    {
+        return "Activity";
     }
     public string GetSummary()
     {
-        return $"{_date} {_type} ({_minutes} minutes) - Distance: {GetDistance()} miles, Speed: {GetSpeed()} mph, Pace: {GetPace()} min per mile";
+        return $"{_date} {GetActivityType()} ({_minutes} minutes) - Distance: {GetDistance()} miles, Speed: {GetSpeed()} mph, Pace: {GetPace()} min per mile";
+    }
+    public int GetMinutes()
+    {
+        return _minutes;
     }
 }
